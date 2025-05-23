@@ -29,7 +29,7 @@ export const HeaderDisplayOptions = () => {
 
             {/* Export button aligned to the right */}
             <div>
-                <Button icon={Export} className="rounded-full font-bold" size="lg">
+                <Button rightSideIcon={Export} className="rounded-full font-bold" size="lg">
                     Export Data
                 </Button>
             </div>

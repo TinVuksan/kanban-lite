@@ -1,7 +1,8 @@
 import type { CategorizedTask } from '../../types/Task';
 import { Header } from '../organisms/Header';
 import { KanbanBoard } from '../organisms/KanbanBoard';
-import { SidebarNav } from '../organisms/SidebarNav';
+import { SidebarNavDesktop } from '../organisms/SidebarNavDesktop';
+import { SidebarNavMobile } from '../organisms/SidebarNavMobile';
 import { UpperNav } from '../organisms/UpperNav';
 
 interface HomepageProps {
@@ -10,24 +11,21 @@ interface HomepageProps {
 
 export const HomeTemplate = ({ data }: HomepageProps) => {
     return (
-        <div className="bg-background flex h-screen w-screen overflow-hidden">
-            {/*//* Side Navigation  */}
-            <aside className="shrink-0">
-                <SidebarNav />
-            </aside>
+        <div className="bg-background flex h-screen w-screen flex-col overflow-hidden md:flex-row">
+            <SidebarNavMobile />
 
-            {/*//* Main layout */}
-            <div className="flex flex-1 flex-col overflow-hidden border-l-1 border-gray-200">
-                {/*//* Top Navigation */}
-                <UpperNav />
-                <main className="flex flex-col overflow-auto">
-                    {/*//* Project Header */}
-                    <section className="flex gap-[16px] border-b-1 border-gray-200 p-[32px]">
+            <div className="flex flex-1 overflow-hidden">
+                <aside className="hidden shrink-0 md:block">
+                    <SidebarNavDesktop />
+                </aside>
+
+                <div className="flex flex-1 flex-col overflow-hidden border-l-1 border-gray-200">
+                    <UpperNav />
+                    <main className="flex flex-col overflow-auto">
                         <Header />
-                    </section>
-                    {/*//* Kanban Board */}
-                    <KanbanBoard initialData={data} />
-                </main>
+                        <KanbanBoard initialData={data} />
+                    </main>
+                </div>
             </div>
         </div>
     );

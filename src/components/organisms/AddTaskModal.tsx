@@ -12,7 +12,7 @@ interface AddTaskModalProps {
 export const AddTaskModal = ({ open, onClose, column, dispatch }: AddTaskModalProps) => {
     return (
         <Modal open={open} onClose={onClose}>
-            <div className="bg-background absolute top-[50%] left-[50%] min-h-[500px] w-150 translate-[-50%] rounded-lg p-6">
+            <div className="bg-background absolute top-[50%] left-[50%] min-h-[550px] w-full translate-[-50%] rounded-lg p-6 md:w-150">
                 <AddTaskForm onClose={onClose} dispatch={dispatch} title={column} />
             </div>
         </Modal>
