@@ -9,6 +9,7 @@ interface ButtonProps {
     leftSideIcon?: React.ReactNode;
     children: React.ReactNode;
     className?: string;
+    onClick?: () => void;
 }
 
 const base = 'focus:outline-none transition cursor-pointer flex gap-3 items-center';
@@ -20,9 +21,13 @@ export const Button = ({
     rightSideIcon,
     leftSideIcon,
     className = '',
+    onClick,
 }: ButtonProps) => {
     return (
-        <button className={`${base} ${buttonVariants[variant]} ${buttonSizes[size]} ${className}`}>
+        <button
+            onClick={onClick}
+            className={`${base} ${buttonVariants[variant]} ${buttonSizes[size]} ${className}`}
+        >
             {leftSideIcon}
             {children}
             {rightSideIcon && <img src={rightSideIcon as string} width={24} alt="Button icon" />}
