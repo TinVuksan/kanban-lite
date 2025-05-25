@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { axiosInstance } from '../api/axiosInstance';
 import { useLocalStorage } from './useLocalStorage';
 
-type Method = 'GET' | 'POST';
+type Method = 'GET';
 
 interface UseApiOptions<T, R = T> {
     method: Method;
