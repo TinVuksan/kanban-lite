@@ -20,6 +20,7 @@ import Logomark from '../../assets/Logomark.svg';
 import Notifications from '../../assets/Notifications.svg';
 import People from '../../assets/People.svg';
 import Settings from '../../assets/Settings.svg';
+import { useOnlineStatus } from '../../hooks/useOnlineStatus';
 
 const navItems = [
     { icon: Home, label: 'Home' },
@@ -33,6 +34,7 @@ const navItems = [
 
 export const SidebarNavMobile = () => {
     const [open, setOpen] = useState(false);
+    const isOnline = useOnlineStatus();
 
     const toggleDrawer = (state: boolean) => () => {
         setOpen(state);
@@ -40,6 +42,11 @@ export const SidebarNavMobile = () => {
 
     return (
         <>
+            {!isOnline && (
+                <div className="bg-danger flex h-[50px] w-full items-center justify-center">
+                    <strong>You are currently offline - changes will be synced</strong>
+                </div>
+            )}
             <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3 md:hidden">
                 <div className="flex items-center gap-2 align-middle">
                     <img className="translate-y-1" src={Logomark} alt="Logo" width={48} />

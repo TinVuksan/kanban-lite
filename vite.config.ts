@@ -57,6 +57,25 @@ export default defineConfig({
                 scope: '/',
                 start_url: '/',
             },
+            workbox: {
+                runtimeCaching: [
+                    {
+                        urlPattern: /^https:\/\/jsonplaceholder\.typicode\.com\/.*$/,
+                        handler: 'NetworkFirst',
+                        options: {
+                            cacheName: 'jsonplaceholder-api-cache',
+                            networkTimeoutSeconds: 5,
+                            expiration: {
+                                maxEntries: 50,
+                                maxAgeSeconds: 3600,
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200],
+                            },
+                        },
+                    },
+                ],
+            },
         }),
     ],
 });
