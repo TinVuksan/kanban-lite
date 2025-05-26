@@ -5,6 +5,7 @@ import { HeaderSortOptions } from '../molecules/HeaderSortOptions';
 
 export const Header = () => {
     const isMobile = useIsMobile();
+
     return (
         <>
             {isMobile ? (
